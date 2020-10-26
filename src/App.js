@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import GradMixer from './ColorGalley/GradMixer';
+import SelectorUI from '../src/SelectorUI/SelectorUI'
+import {BrowserRouter as Router,Switch,Route}  from 'react-router-dom';
+import {ColorProvider}  from '../src/ColorContext';
+
+import './App.css'
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return(
+    <>
+    <ColorProvider>
+    <Router>
+    <Switch>
+
+    <Route path="/" exact  component={GradMixer}></Route>
+    <Route path="/selector" exact  component={SelectorUI}></Route>
+
+    </Switch>
+    </Router>
+    </ColorProvider>
+
+    </>
+  )
 }
 
 export default App;
